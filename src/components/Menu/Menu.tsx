@@ -3,7 +3,7 @@ import * as AppGeneral from "../socialcalc/index.js";
 import { File, Local } from "../Storage/LocalStorage";
 import { isPlatform, IonToast } from "@ionic/react";
 import { EmailComposer } from "capacitor-email-composer";
-// import { Printer } from "@ionic-native/printer";
+import { Printer } from "@ionic-native/printer";
 import { IonActionSheet, IonAlert } from "@ionic/react";
 import { saveOutline, save, mail, print } from "ionicons/icons";
 import { APP_NAME } from "../../app-data.js";
@@ -58,8 +58,8 @@ const Menu: React.FC<{
 
   const doPrint = () => {
     if (isPlatform("hybrid")) {
-      // const printer = Printer;
-      // printer.print(AppGeneral.getCurrentHTMLContent());
+      const printer = Printer;
+      printer.print(AppGeneral.getCurrentHTMLContent());
     } else {
       const content = AppGeneral.getCurrentHTMLContent();
       var printWindow = window.open("", "", "left=100,top=100");
