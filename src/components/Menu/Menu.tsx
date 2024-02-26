@@ -56,13 +56,14 @@ const Menu: React.FC<{
     return filename;
   };
 
-  const doPrint = () => {
+ const doPrint = () => {
     if (isPlatform("hybrid")) {
       const printer = Printer;
       printer.print(AppGeneral.getCurrentHTMLContent());
     } else {
       const content = AppGeneral.getCurrentHTMLContent();
-      var printWindow = window.open("", "", "left=100,top=100");
+      // useReactToPrint({ content: () => content });
+      var printWindow = window.open("/printwindow", "Print Invoice");
       printWindow.document.write(content);
       printWindow.print();
     }
